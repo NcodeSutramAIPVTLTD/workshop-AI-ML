@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Integration</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+<body>
+    <button class="rzp-button" data-amount="50000">Pay ₹500</button>
+    <button class="rzp-button" data-amount="100000">Pay ₹1000</button>
+    <!-- Add more buttons as needed -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            const buttons = document.querySelectorAll(".rzp-button");
+
+            if (buttons) {
+                buttons.forEach(button => {
+                    button.addEventListener("click", function(event) {
+                        event.preventDefault();
+                        const amount = this.getAttribute("data-amount");
+
+                        // Make AJAX request to create payment order
+                        fetch("/make_payment", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRFToken": csrfToken
+                            },
+                            body: JSON.stringify({ "amount": amount })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.order_id) {
+                                // Initialize Razorpay payment
+                                const options = {
+                                    "key": "rzp_test_5RluvyQOjoDsIQ",
+                                    "amount": amount,
+                                    "currency": "INR",
+                                    "name": "LDC Institute of Technical Studies, Soraon, Prayagraj",
+                                    "description": "Test Transaction",
+                                    "image": "https://example.com/your_logo", // Replace with your logo URL
+                                    "order_id": data.order_id,
+                                    "callback_url": "/success_payment",
+                                    "prefill": {
+                                        "name": "Gaurav Kumar",
+                                        "email": "gaurav.kumar@example.com",
+                                        "contact": "9565033338"
+                                    },
+                                    "notes": {
+                                        "address": "Razorpay Corporate Office"
+                                    },
+                                    "theme": {
+                                        "color": "#5cffab"
+                                    }
+                                };
+
+                                const rzp = new Razorpay(options);
+                                rzp.open();
+                            } else {
+                                alert('Failed to create payment order.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

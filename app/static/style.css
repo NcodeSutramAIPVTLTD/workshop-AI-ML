@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1;
+    color: #1f2122;
+    background-color: #ffffff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+}
+.cover-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('./image/1690286652181.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  opacity: 1;
+}
+
+.content {
+  padding: 20px;
+  background-color: white;
+  z-index: 1;
+  position: relative;
+  margin-top: 100vh; /* Ensure content starts below the cover image */
+}
+p{
+  line-height: 1.8 ;
+}
+li{
+    color: #6c757d !important;
+     
+}
+.gender li{
+  list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #6c757d;
+}
+b{
+	color: rgb(227 13 13 / 90%);
+}
+h1{
+  color: rgb(227 13 13 / 90%);
+}
+.bg-light {
+    background-color: #fcfeff !important;
+}
+.navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .show>.nav-link {
+    color: rgb(227 13 13 / 90%);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgb(255 0 0 / 55%);
+}
+
+.my-5 {
+    margin-top: 4rem !important;
+    margin-bottom: 3rem !important;
+}
+/* profile card */
+ 
+.card-container {
+  font-family: Verdana, Tahoma, sans-serif;
+	 
+	 
+	overflow: hidden;
+	background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	padding: 10px;
+	width: 250px; /* Adjust width as needed */
+	text-align: center;
+	transition: transform 0.3s ease;
+  }
+  
+  .card-container:hover {
+	transform: translateY(-5px);
+  }
+  
+  .card-container img.round {
+	border-radius: 50%;
+	width: 170px; /* Adjust image size */
+	height: 200px; /* Adjust image size */
+	object-fit: cover;
+	margin-top: 10px;
+  }
+  
+  .card-container .card-text {
+	padding: 10px;
+  }
+  
+  .card-container h3 {
+	font-size: 1.5rem; /* Adjust font size */
+	margin-bottom: 0.5rem;
+  color: #0f1ef1;
+   
+  }
+  
+  .card-container p {
+	font-size: 1rem; /* Adjust font size */
+	color: #414142;
+	margin-bottom: 0.5rem;
+  }
+  
+ 
+
+ 
+
+ 
+ 
+ 
+
+ 
+ 

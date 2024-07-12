@@ -1,0 +1,188 @@
+ 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+font-family: "Poppins", sans-serif;
+/* font-weight: 300; */
+font-style: normal;
+font: 1em sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+
+}
+.col-md-12{
+ 
+ display: flex;
+align-items: center;
+justify-content: center;
+padding:20px;
+flex-direction: column;
+
+}
+ .registers{
+  position: relative;
+  
+background:#ffffff;
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0px 0px 45px rgb(95 80 80 / 48%);;
+ }
+.containers{
+position: relative;
+max-width: 700px;
+width: 100%;
+background:#ffffff;
+padding: 25px;
+border-radius: 10px;
+box-shadow: 0px 0px 45px rgba(5, 5, 5, 0.48);;
+
+
+}
+  header{
+font-size: 1.2rem;
+color: #fa0101;
+font-weight: 500;
+text-align: center;
+font-weight: bold;
+}
+ 
+  .input-box{
+width: 100%;
+margin-top: 20px;
+}
+  label{
+color:#333;
+font-size: 0.8rem;
+}
+.input-box input{
+position: relative;
+ height: 30px; 
+width: 100%;
+outline: none;
+font-size: 0.9rem;   
+color: #707070;
+border: 1px solid #ddd;
+border-radius: 6px;
+padding: 0 15px;
+margin-top: 8px; 
+}
+  .Description input{
+    position: relative;
+    height: 150px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;   
+    color: #707070;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 15px;
+    margin-top: 8px; 
+    }
+  .input-box1 input{
+position: relative;
+height: 30px;
+width: 100%;
+outline: none;
+font-size: 1rem;   
+color: #707070;
+border: 1px solid #ddd;
+border-radius: 6px;
+padding: 0 15px;
+margin-top: 8px; 
+}
+  .column{
+display: flex;
+column-gap: 25px;
+}
+
+  :where(.gender-option, .gender){
+display: flex;
+align-items: center ;
+column-gap: 40px;
+flex-wrap: wrap;
+}
+  .gender-box{
+margin-top: 20px;
+}
+  .gender{
+column-gap:5px ;
+list-style: none;
+}
+  :where(.gender input, .gender label){
+cursor: pointer;
+}
+.gender-box{
+color: #333;
+font-size: 1rem;
+font-weight: 400;
+margin-bottom: 8px;
+} 
+.select-box select{
+margin-top: 10px; 
+width: 100%;
+height: 50px;
+}
+.select-box select:hover{
+    border: 2px solid rgb(255, 0, 0);
+    }
+    input:hover{
+border: 4px solid rgb(255, 0, 0);
+}
+textarea:hover{
+  border: 4px solid rgb(255, 0, 0);
+}
+ .Description input:hover{
+    border: 2px solid rgb(255, 0, 0);
+    }
+    
+    .button input{
+        margin-top: 10px;
+        width: 100%;
+        height: 40px;
+        background: #f80202;
+        color: #f8f8f8;
+        font-size: 1.2rem;   
+        font-weight: 700;
+        border-radius: 15px
+        ;
+    }
+ 
+
+/* Responsive */
+@media screen and (max-width: 500px){
+.column{
+flex-wrap: wrap;
+}
+ :where(.gender-option, .gender){
+flex-wrap: wrap;
+}
+}
+.details{
+    margin-top: 50px;
+    gap: 10px;
+}
+ 
+.details  b{
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2196F3;
+   
+}
+.job-details{
+    margin-top: 10px;
+}
+
+.content {
+  display: none;
+}
+.content.active {
+  display: block;
+}
+.mt-5, .my-5 {
+  margin-top: 5rem !important;
+}
+.bg-success {
+  background-color: #dfdfdf !important;
+}
+ 

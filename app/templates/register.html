@@ -1,0 +1,214 @@
+ 
+
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/form.css">
+    <link href="../static/image/favicon.ico" rel="icon">
+    <title>Register Page</title>
+   <script>
+    if (sessionStorage.getItem('username') === 'true') {
+        window.location.href = "{{ url_for('dashboard') }}";
+    }
+</script>
+  </head>
+  <body>
+    <div class="col-md-12">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top " style="box-shadow: 0px 0px 10px black;">
+          <div class="container-fluid gap-5">
+             <img src="../static/image/OIP.jpeg" width="50px" height="30px" alt="">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('register')}}">Register</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('speaker')}}">Speakers</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('program1')}}">Program</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('committe')}}">Committe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('contact')}}">Contact us</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('checkout')}}">Payment</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{url_for('login')}}">Login</a>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </nav>
+  </div>
+  
+  
+       <br>
+        
+     <div class="container">
+       <div>
+        <h1 class="text-center">Registration Details</h1>
+        <hr>
+       </div>
+           <p class="text-muted font-size-15 " align="justify">SHIVA 2024 (fully online mode) is an internship program sponsored under the SPOKE program of IIT BHU and IIIT Allahabad, for learning the concepts of machine learning and deep learning. </p>
+           <p class="text-muted font-size-15 " align="justify">Fill the registration form and subsequently pay the registration fee to get registered.</p>
+           <p class="text-muted font-size-15  " align="justify">Registered candidates can login where they can pay the course fee to avail online resources such as link for the online classes, recorded videos, and other such e-materials. </p>
+           
+           <p align="justify"><b>Registration deadline:-</b><span style="font-weight: bold;">16-July-2024</span>  </p>
+            <p align="justify"><b>Course Start:-</b><span style="font-weight: bold;">17-July-2024</span>  </p>
+            <p align="justify"><b>Course Duration:-</b><span style="font-weight: bold;">17-July-2024 to 7 August (3 week)</span>  </p>
+            <p align="justify"><b>Registration Fee:-</b><span style="font-weight: bold;">Rs. 2000.00</span>  </p>
+            <p align="justify"><b>Course Fee:-</b><span style="font-weight: bold;">Rs. 4700.00</span>  </p>
+            <p align="justify"><b>Note:</b> If you are registered , complete your payment using this link- <a href="{{url_for('checkout')}}"><button class="btn btn-primary">Payment</button></a></p>
+     </div>
+    
+        
+       <div class="container">
+        <div class="row contens">
+            <div class="col-md-12">
+                <section class="containers">
+                    <header>Registration Form</header>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <div class="alert alert-info">
+                            {% for category, message in messages %}
+                                <p class="mb-0">{{ message }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                    <form method="POST" action="{{ url_for('register') }}">
+                        {{ form.hidden_tag() }}
+
+                        <div class="input-box">
+                            {{ form.username.label(class="label") }}
+                            {{ form.username(class="form-control", placeholder="Enter Your Name") }}
+                            {% if form.username.errors %}
+                            <ul class="text-danger">
+                                {% for error in form.username.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+
+                        <div class="input-box">
+                            {{ form.father.label }}
+                            {{ form.father(placeholder="Enter Father Name") }}
+                        </div>
+                         
+                        <div class="input-box">
+                          {{ form.password.label }}
+                          {{ form.password(placeholder="create password") }}
+                      </div>
+
+                        <div class="input-box">
+                          {{ form.college.label }}
+                          {{ form.college(placeholder="Enter full college Name") }}
+                      </div>
+                      <div class="input-box">
+                        {{ form.qualification.label }}
+                        {{ form.qualification(class='form-control') }}
+                    </div>
+                        <div class="input-box">
+                            {{ form.email.label(class="form-control-label") }}
+                            {{ form.email(class="form-control", placeholder="Enter Your Email") }}
+                            {% if form.email.errors %}
+                            <ul class="text-danger">
+                                {% for error in form.email.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+                        </div>
+
+                        <div class="column">
+                            <div class="input-box">
+                                {{ form.number.label }}
+                                {{ form.number(type="number", placeholder="Enter your number") }}
+                                {% if form.number.errors %}
+                                <ul class="text-danger">
+                                    {% for error in form.number.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+
+
+                        </div>
+
+                        <div class="gender-box"  >
+                            <label >gender</label>
+                            <div class="gender-option" >
+                                <div class="gender"  >
+                                    {{ form.gender(value='male', id='male') }}
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="input-box">
+                            {{ form.dateofbirth.label }}
+                            {{ form.dateofbirth(placeholder="Enter Your Date of birth") }}
+                        </div>
+ 
+
+                 
+                        <div class="button">
+                            {{form.submit}}
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-dark" style="height: 200px;">
+      <div class="row">
+          <div class="col-md-12">
+            <div class="container">
+              <div class="row  " style="margin-top: 70px;">
+                  <div class="col-md-2"><a href="{{url_for('index')}}" > <b>Home</b></a></div>
+                  <div class="col-md-2"><a href="{{url_for('register')}}"><b>Register</b></a></div>
+                  <div class="col-md-2"><a href="{{url_for('speaker')}}"><b>Speaker</b></a></div>
+                  <div class="col-md-2"><a href="{{url_for('program1')}}"><b>Program</b></a></div>
+                  <div class="col-md-2"><a href="{{url_for('committe')}}"><b>Committe</b></a></div>
+                  <div class="col-md-2"><a href="{{url_for('contact')}}"><b>Contact</b></a></div>
+              </div>
+              <p class="text-center text-secondary my-3"><b>© 2023 LDC Institute of Technical Studies, Prayagraj</b></p>
+            </div>
+          </div>
+      </div>
+  </div>
+        
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+     
+  </body>
+</html>

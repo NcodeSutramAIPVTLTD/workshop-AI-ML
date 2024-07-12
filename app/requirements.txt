@@ -1,0 +1,10 @@
+flask
+razorpay
+gunicorn
+Werkzeug
+Flask-WTF
+WTForms
+fastapi-csrf-protect
+pymongo
+bcrypt
+fpdf

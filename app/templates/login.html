@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/form.css">
+    <link href="../static/image/favicon.ico" rel="icon">
+    <title>Login Page</title>
+   <script>
+    if (sessionStorage.getItem('username') === 'true') {
+        window.location.href = "{{ url_for('dashboard') }}";
+    }
+</script>
+  </head>
+  <body>
+     
+    <div class="col-md-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top " style="box-shadow: 0px 0px 10px black;">
+            <div class="container-fluid gap-5">
+               <img src="../static/image/OIP.jpeg" width="50px" height="30px" alt="">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2 ">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('index')}}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('register')}}">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('speaker')}}">Speakers</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('program1')}}">Program</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('committe')}}">Committe</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('contact')}}">Contact us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('checkout')}}">Payment</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('login')}}">login</a>
+                  </li>
+                </ul>
+                
+              </div>
+            </div>
+          </nav>
+    </div>
+  
+       <br>
+       
+       <div class="container" >
+        <div class="row">
+          <div class="col-md-12" style="margin-top: 20px;">
+            
+            <p>   Only registered users can Login- <a href="{{url_for('register')}}"><button class="btn btn-primary">Register Now</button></a></p>
+          </div>
+        </div>
+       </div>
+       <div class="container   ">
+        <div class="row contens">
+            <div class="col-md-12">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {% for category, message in messages %}
+                            <p class="mb-0">{{ message }}</p>
+                        {% endfor %}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endif %}
+            {% endwith %}
+                <section class="containers">
+                    <header>Login</header>
+
+            <form action="{{ url_for('login') }}" method="POST">
+                {{ form.hidden_tag() }}
+
+                <div class="input-box">
+                    {{form.email.label}}
+                    {{form.email(type="email")}}
+
+                </div>
+
+                <div class="input-box">
+
+                    {{form.password.label}}
+                    {{form.password(type="password")}}
+
+                </div>
+                <div class="button">
+                    {{form.submit(class="btn btn-primary my-3 ")}}
+
+                </div>
+ 
+            </form>
+                </section>
+            </div>
+        </div>
+    </div>
+   
+        
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+     
+  </body>
+</html>
+
+
+
+ 
